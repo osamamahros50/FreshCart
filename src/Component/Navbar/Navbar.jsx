@@ -299,6 +299,26 @@ export default function Navbar({ changeTheme, theme }) {
                         Orders
                       </NavLink>
                     </li>
+                    <li className="text-xl navhover">
+                      <NavLink
+                        to="/cart"
+                        className={({ isActive }) =>
+                          isActive ? "active-link" : ""
+                        }
+                      >
+                           <ShoppingCart />
+                      </NavLink>
+                    </li>
+                    <li className="text-xl navhover">
+                      <NavLink
+                        to="/wishlist"
+                        className={({ isActive }) =>
+                          isActive ? "active-link" : ""
+                        }
+                      >
+                           <Heart />
+                      </NavLink>
+                    </li>
                   </>
                 )}
               </ul>

@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {  createBrowserRouter, RouterProvider } from "react-router-dom";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import Layout from "./Component/Layout/Layout";
 import Home from "./Pages/Home/Home";
@@ -20,7 +20,6 @@ import Cart from "./Pages/Cart/Cart";
 import Cartcontextprovider from "./Context/Cartcontextprovider";
 import Brandsdetails from "./Pages/Brandsdetails/Brandsdetails";
 import Categoriesdetails from "./Pages/Categoriesdetails/Categoriesdetails";
-import Wishlistcontextprovider from "./Context/Wishlistcontextprovider";
 import WishlistPAge from "./Pages/WishlistPage/WishlistPage";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -30,7 +29,8 @@ import "slick-carousel/slick/slick-theme.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import PageNotFound from "./Pages/PageNotFound/PageNotFound";
-import AuthContextProvider from '@/Context/AuthContextProvider';
+import { AuthContextProvider } from '@/Context/AuthContextProvider';
+import WishlistContextProvider from "../Context/Wishlistcontextprovider";
 function App() {
   useEffect(() => {
     AOS.init({
@@ -157,6 +157,7 @@ function App() {
       path: "*",
       element: <PageNotFound />,
     },
+    
   ]);
   let client = new QueryClient();
   return (
@@ -164,7 +165,7 @@ function App() {
       <QueryClientProvider client={client}>
         <AuthContextProvider>
           <Cartcontextprovider>
-            <Wishlistcontextprovider>
+            <WishlistContextProvider>
               <RouterProvider router={Routes} />
               <ToastContainer
                 position="top-right"
@@ -178,7 +179,7 @@ function App() {
                 pauseOnHover
                 theme="colored"
               />
-            </Wishlistcontextprovider>
+            </WishlistContextProvider>
           </Cartcontextprovider>
         </AuthContextProvider>
         <ReactQueryDevtools initialIsOpen={false} />
