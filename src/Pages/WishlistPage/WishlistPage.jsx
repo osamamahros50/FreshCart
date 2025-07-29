@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from "react";
 import WishlistItem from "../../Component/WishlistItem/WishlistItem";
-import { WishlistContext } from "../../Context/Wishlistcontextprovider";
 import Loadere from "../../Component/Loader/Loadere";
 import { ChevronLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { WishlistContext } from "../../../Context/Wishlistcontextprovider";
 export default function WishlistPage() {
   const { wishlist, getLogedWishlist, loading } = useContext(WishlistContext);
 

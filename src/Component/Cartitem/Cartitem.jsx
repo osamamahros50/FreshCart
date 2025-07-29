@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-import { cartcontext } from "../../Context/Cartcontextprovider";
 import { Trash } from "lucide-react";
+import { cartcontext } from "../../../Context/CartContextProvider";
 
 export default function Cartitem({ item }) {
   console.log(item);

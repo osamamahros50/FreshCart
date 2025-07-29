@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { authContext } from "../Context/AuthContextProvider";
 import { Navigate } from "react-router-dom";
+import { authContext } from "../../Context/AuthContextProvider";
 
 export default function LoginProtected({ children }) {
   let { token } = useContext(authContext);

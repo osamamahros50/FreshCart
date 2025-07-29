@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 export let cartcontext = createContext(null);
 
-export default function Cartcontextprovider({ children }) {
+export default function CartContextProvider({ children }) {
   let [cart, setCart] = useState(null);
   let [loading, setLoading] = useState(false);
   let [dissapled, setDissapled] = useState(false);

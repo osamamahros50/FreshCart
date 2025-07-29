@@ -1,8 +1,8 @@
 import { Eye, Heart, ShoppingCart, Star } from "lucide-react";
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { cartcontext } from "../../Context/Cartcontextprovider";
-import { WishlistContext } from "../../Context/Wishlistcontextprovider";
+import { WishlistContext } from "../../../Context/Wishlistcontextprovider";
+import { cartcontext } from "../../../Context/CartContextProvider";
 
 export default function Productcard({ item }) {
   let { getaddToCart } = useContext(cartcontext);

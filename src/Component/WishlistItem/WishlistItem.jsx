@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { cartcontext } from "../../Context/Cartcontextprovider";
 import { ShoppingCart, Trash } from "lucide-react";
-import { WishlistContext } from "../../Context/Wishlistcontextprovider";
+import { cartcontext } from "../../../Context/CartContextProvider";
+import { WishlistContext } from "../../../Context/Wishlistcontextprovider";
 
 export default function WishlistItem({ item }) {
   let { getaddToCart, dissapled } = useContext(cartcontext);

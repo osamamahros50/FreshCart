@@ -2,10 +2,10 @@ import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Loadere from "../../Component/Loader/Loadere";
-import { cartcontext } from "../../Context/Cartcontextprovider";
 import { ChevronLeft, Eye, Heart, ShoppingCart, Star } from "lucide-react";
 import ProductNotFound from "../ProductNotFound/ProductNotFound";
-import { WishlistContext } from "../../Context/Wishlistcontextprovider";
+import { WishlistContext } from "../../../Context/Wishlistcontextprovider";
+import { cartcontext } from "../../../Context/CartContextProvider";
 
 export default function Brandsdetails() {
   const { id } = useParams(); // ← ID of the brand from the URL

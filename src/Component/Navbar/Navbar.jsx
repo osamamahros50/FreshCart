@@ -11,11 +11,11 @@ import {
   Sun,
 } from "lucide-react";
 import { Link, NavLink } from "react-router-dom";
-import { authContext } from "../../Context/AuthContextProvider";
 import { useContext, useEffect, useState } from "react";
-import { cartcontext } from "../../Context/Cartcontextprovider";
-import { WishlistContext } from "../../Context/Wishlistcontextprovider";
 import { motion, AnimatePresence } from "framer-motion";
+import { cartcontext } from "../../../Context/CartContextProvider";
+import { WishlistContext } from "../../../Context/Wishlistcontextprovider";
+import { authContext } from "../../../Context/AuthContextProvider";
 export default function Navbar({ changeTheme, theme }) {
   let { token, setToken } = useContext(authContext);
   const [animateCart, setAnimateCart] = useState(false);

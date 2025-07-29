@@ -2,9 +2,9 @@ import axios from "axios";
 import { useFormik } from "formik";
 import { useContext, useState } from "react";
 import { object, string } from "yup";
-import { cartcontext } from "../../Context/Cartcontextprovider";
 import { useNavigate } from "react-router-dom";
 import { Loader } from "lucide-react";
+import { cartcontext } from "../../../Context/CartContextProvider";
 
 export default function Checkout({ totalPrice }) {
   let { cart, getLogedCart } = useContext(cartcontext);

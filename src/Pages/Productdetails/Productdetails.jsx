@@ -3,9 +3,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios/unsafe/axios.js";
 import Slider from "react-slick";
 import Productcard from "../../Component/Productcard/Productcard";
-import { cartcontext } from "../../Context/Cartcontextprovider";
-import { WishlistContext } from "../../Context/Wishlistcontextprovider";
 import { ChevronLeft, Heart } from "lucide-react";
+import { WishlistContext } from "../../../Context/Wishlistcontextprovider";
+import { cartcontext } from "../../../Context/CartContextProvider";
 export default function Productdetails() {
   let { getaddToCart } = useContext(cartcontext);
   let { getaddToWishlist, wishlistlike, removeItemWishlist } =

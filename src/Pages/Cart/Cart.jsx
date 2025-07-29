@@ -1,10 +1,10 @@
 import { useContext } from "react";
-import { cartcontext } from "./../../Context/Cartcontextprovider";
 import Cartitem from "../../Component/Cartitem/CArtitem";
 import { useEffect } from "react";
 import Checkout from "../../Component/Checkout/Checkout";
 import { useNavigate } from "react-router-dom";
 import { ChevronLeft } from "lucide-react";
+import { cartcontext } from "../../../Context/CartContextProvider";
 export default function Cart() {
   let { cart, loading, getLogedCart, clearCart } = useContext(cartcontext);
   const navigate = useNavigate();

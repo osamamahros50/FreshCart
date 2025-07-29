@@ -1,7 +1,7 @@
 import { Trash } from "lucide-react";
 import React, { useContext } from "react";
-import { WishlistContext } from "../../Context/Wishlistcontextprovider";
 import { Link } from "react-router-dom";
+import { WishlistContext } from "../../../Context/Wishlistcontextprovider";
 export default function Allorders({ item }) {
   let { loading } = useContext(WishlistContext);
 

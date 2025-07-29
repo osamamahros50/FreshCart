@@ -17,7 +17,6 @@ import ProtectRoureProvider from "./Protect/ProtectRoureProvider";
 import Productdetails from "./Pages/Productdetails/Productdetails";
 import LoginProtected from "./Protect/Loginprotected";
 import Cart from "./Pages/Cart/Cart";
-import Cartcontextprovider from "./Context/Cartcontextprovider";
 import Brandsdetails from "./Pages/Brandsdetails/Brandsdetails";
 import Categoriesdetails from "./Pages/Categoriesdetails/Categoriesdetails";
 import WishlistPAge from "./Pages/WishlistPage/WishlistPage";
@@ -29,8 +28,9 @@ import "slick-carousel/slick/slick-theme.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import PageNotFound from "./Pages/PageNotFound/PageNotFound";
-import { AuthContextProvider } from '@/Context/AuthContextProvider';
+import AuthContextProvider from "../Context/AuthContextProvider";
 import WishlistContextProvider from "../Context/Wishlistcontextprovider";
+import CartContextProvider from "../Context/CartContextProvider";
 function App() {
   useEffect(() => {
     AOS.init({
@@ -164,7 +164,7 @@ function App() {
     <>
       <QueryClientProvider client={client}>
         <AuthContextProvider>
-          <Cartcontextprovider>
+          <CartContextProvider>
             <WishlistContextProvider>
               <RouterProvider router={Routes} />
               <ToastContainer
@@ -180,7 +180,7 @@ function App() {
                 theme="colored"
               />
             </WishlistContextProvider>
-          </Cartcontextprovider>
+          </CartContextProvider>
         </AuthContextProvider>
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>

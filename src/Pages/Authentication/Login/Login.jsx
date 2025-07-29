@@ -6,8 +6,8 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
-import { authContext } from "../../../Context/AuthContextProvider";
 import { Eye, EyeOff, Loader } from "lucide-react";
+import { authContext } from "../../../../Context/AuthContextProvider";
 
 export default function Login() {
   let [loadingspin, setloadingspin] = useState(false);
