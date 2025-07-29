@@ -1,0 +1,54 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Build directories
+dist/         
+dist-ssr/   
+build/       
+.out/         
+.next/        
+
+# Dependencies
+node_modules/ 
+
+# Environment variables
+.env           
+.env.local     
+.env.*.local
+
+# Editor/IDE
+.vscode/       
+.idea/         
+.DS_Store      
+*.suo          
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?          
+
+# System files
+Thumbs.db      
+ehthumbs.db
+Desktop.ini
+
+# Testing
+coverage/      
+
+# Package manager specific
+package-lock.json 
+yarn.lock
+pnpm-lock.yaml
+
+# ملفات مؤقتة
+*.tmp
+*.temp
+
+# ملفات النظام
+*.bak
+*.backup
