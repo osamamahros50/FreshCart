@@ -11,10 +11,10 @@ export default function Categoriesdetails() {
   const { id } = useParams();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [selectedProductId, setSelectedProductId] = useState(null);
+  const [activeCardId, setActiveCardId] = useState(null); // ✅
 
-  let { getaddToCart } = useContext(cartcontext);
-  let { getaddToWishlist, wishlistlike, removeItemWishlist } = useContext(WishlistContext);
+  const { getaddToCart } = useContext(cartcontext);
+  const { getaddToWishlist, wishlistlike, removeItemWishlist } = useContext(WishlistContext);
   const navigate = useNavigate();
 
   async function getProductsByBrand() {
@@ -25,7 +25,7 @@ export default function Categoriesdetails() {
       );
       setProducts(data.data);
     } catch (error) {
-      console.error("Failed to fetch products by brand", error);
+      console.error("Failed to fetch products by category", error);
     } finally {
       setLoading(false);
     }
@@ -63,19 +63,21 @@ export default function Categoriesdetails() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
             {products.map((product) => {
+              const isActive = activeCardId === product._id;
               const isInWishlist =
                 Array.isArray(wishlistlike) &&
                 wishlistlike.some((w) => w && w._id === product._id);
 
-              const showIcons =
-                selectedProductId === product._id; 
-
               return (
                 <div
                   key={product._id}
-                  onClick={() => setSelectedProductId(product._id)} 
+                  onClick={() =>
+                    setActiveCardId(
+                      activeCardId === product._id ? null : product._id
+                    )
+                  }
                   data-aos="fade-up"
-                  className="relative group rounded shadow p-3 hover:shadow-md transition bg-white dark:bg-slate-700 dark:text-slate-200 hover:border-2 hover:border-secondary"
+                  className="relative group rounded shadow p-3 hover:shadow-md transition bg-white dark:bg-slate-700 dark:text-slate-200 hover:border-2 hover:border-secondary cursor-pointer"
                 >
                   <div className="relative">
                     <img
@@ -85,21 +87,21 @@ export default function Categoriesdetails() {
                     />
 
                     <div
-                      className={`absolute top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2 flex justify-center gap-4 transition 
+                      className={`absolute top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2 flex justify-center gap-4 transition
                         ${
-                          showIcons
+                          isActive
                             ? "opacity-100 translate-y-0"
-                            : "md:opacity-0 md:translate-y-20 md:group-hover:opacity-100 md:group-hover:translate-y-0"
-                        }`}
+                            : "opacity-0 translate-y-20"
+                        }
+                        group-hover:opacity-100 group-hover:translate-y-0
+                        duration-300`}
                     >
                       <div
                         onClick={(e) => {
                           e.stopPropagation();
-                          if (isInWishlist) {
-                            removeItemWishlist(product._id);
-                          } else {
-                            getaddToWishlist(product._id);
-                          }
+                          isInWishlist
+                            ? removeItemWishlist(product._id)
+                            : getaddToWishlist(product._id);
                         }}
                         className="bg-secondary hover:bg-green-800 text-white p-3 rounded-full cursor-pointer hover:animate-bounce"
                       >
