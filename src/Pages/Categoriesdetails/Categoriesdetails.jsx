@@ -11,9 +11,10 @@ export default function Categoriesdetails() {
   const { id } = useParams();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [selectedProductId, setSelectedProductId] = useState(null);
+
   let { getaddToCart } = useContext(cartcontext);
-  let { getaddToWishlist, wishlistlike, removeItemWishlist } =
-    useContext(WishlistContext);
+  let { getaddToWishlist, wishlistlike, removeItemWishlist } = useContext(WishlistContext);
   const navigate = useNavigate();
 
   async function getProductsByBrand() {
@@ -61,80 +62,94 @@ export default function Categoriesdetails() {
           </button>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-            {products.map((product) => (
-              <div
-                key={product._id}
-                data-aos="fade-up"
-                className="relative group rounded shadow p-3 hover:shadow-md transition bg-white dark:bg-slate-700 dark:text-slate-200 hover:border-2 hover:border-secondary"
-              >
-                <div className="relative">
-                  <img
-                    src={product.imageCover}
-                    alt={product.title}
-                    className="h-48 w-full object-contain mb-3"
-                  />
+            {products.map((product) => {
+              const isInWishlist =
+                Array.isArray(wishlistlike) &&
+                wishlistlike.some((w) => w && w._id === product._id);
 
-                  <div className="absolute top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2 flex justify-center gap-4 md:opacity-0 md:translate-y-20 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition">
-                    <div
-                      onClick={() => {
-                        const isInWishlist =
-                          Array.isArray(wishlistlike) &&
-                          wishlistlike.some(
-                            (w) => w && w._id === product._id
-                          );
-                        if (isInWishlist) {
-                          removeItemWishlist(product._id);
-                        } else {
-                          getaddToWishlist(product._id);
-                        }
-                      }}
-                      className="bg-secondary hover:bg-green-800 text-white p-3 rounded-full cursor-pointer hover:animate-bounce"
-                    >
-                      {Array.isArray(wishlistlike) &&
-                      wishlistlike.some(
-                        (w) => w && w._id === product._id
-                      ) ? (
-                        <i className="fa-solid fa-heart text-red-500 text-xl"></i>
-                      ) : (
-                        <i className="fa-regular fa-heart text-white text-xl"></i>
-                      )}
-                    </div>
+              const showIcons =
+                selectedProductId === product._id; 
+
+              return (
+                <div
+                  key={product._id}
+                  onClick={() => setSelectedProductId(product._id)} 
+                  data-aos="fade-up"
+                  className="relative group rounded shadow p-3 hover:shadow-md transition bg-white dark:bg-slate-700 dark:text-slate-200 hover:border-2 hover:border-secondary"
+                >
+                  <div className="relative">
+                    <img
+                      src={product.imageCover}
+                      alt={product.title}
+                      className="h-48 w-full object-contain mb-3"
+                    />
 
                     <div
-                      onClick={() => getaddToCart(product._id)}
-                      className="bg-main hover:bg-green-800 text-white p-3 rounded-full cursor-pointer hover:animate-bounce"
+                      className={`absolute top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2 flex justify-center gap-4 transition 
+                        ${
+                          showIcons
+                            ? "opacity-100 translate-y-0"
+                            : "md:opacity-0 md:translate-y-20 md:group-hover:opacity-100 md:group-hover:translate-y-0"
+                        }`}
                     >
-                      <ShoppingCart />
+                      <div
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          if (isInWishlist) {
+                            removeItemWishlist(product._id);
+                          } else {
+                            getaddToWishlist(product._id);
+                          }
+                        }}
+                        className="bg-secondary hover:bg-green-800 text-white p-3 rounded-full cursor-pointer hover:animate-bounce"
+                      >
+                        {isInWishlist ? (
+                          <i className="fa-solid fa-heart text-red-500 text-xl"></i>
+                        ) : (
+                          <i className="fa-regular fa-heart text-white text-xl"></i>
+                        )}
+                      </div>
+
+                      <div
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          getaddToCart(product._id);
+                        }}
+                        className="bg-main hover:bg-green-800 text-white p-3 rounded-full cursor-pointer hover:animate-bounce"
+                      >
+                        <ShoppingCart />
+                      </div>
+
+                      <Link
+                        to={`/productdetails/${product._id}`}
+                        onClick={(e) => e.stopPropagation()}
+                        className="bg-main hover:bg-green-800 text-white p-3 rounded-full cursor-pointer hover:animate-bounce"
+                      >
+                        <Eye />
+                      </Link>
                     </div>
+                  </div>
 
-                    <Link
-                      to={`/productdetails/${product._id}`}
-                      className="bg-main hover:bg-green-800 text-white p-3 rounded-full cursor-pointer hover:animate-bounce"
-                    >
-                      <Eye />
-                    </Link>
+                  <h3 className="text-md font-bold text-main mb-1">
+                    {product.category.name}
+                  </h3>
+                  <h3 className="text-md text-secondary font-bold mb-2">
+                    {product.title.split(" ", 2).join(" ")}
+                  </h3>
+                  <div className="flex justify-between items-center">
+                    <p className="text-main font-semibold">
+                      {product.price} <span className="text-secondary">EGP</span>
+                    </p>
+                    <div className="flex items-center gap-1">
+                      <Star className="text-yellow-300 w-4 h-4" />
+                      <span className="text-secondary text-sm">
+                        {product.ratingsAverage}
+                      </span>
+                    </div>
                   </div>
                 </div>
-
-                <h3 className="text-md font-bold text-main mb-1">
-                  {product.category.name}
-                </h3>
-                <h3 className="text-md text-secondary font-bold mb-2">
-                  {product.title.split(" ", 2).join(" ")}
-                </h3>
-                <div className="flex justify-between items-center">
-                  <p className="text-main font-semibold">
-                    {product.price} <span className="text-secondary">EGP</span>
-                  </p>
-                  <div className="flex items-center gap-1">
-                    <Star className="text-yellow-300 w-4 h-4" />
-                    <span className="text-secondary text-sm">
-                      {product.ratingsAverage}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </>
       )}

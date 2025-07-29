@@ -11,7 +11,7 @@ export default function Brandsdetails() {
   const { id } = useParams();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [activeCardId, setActiveCardId] = useState(null); // ← لتفعيل الكرت بالموبايل
+  const [activeCardId, setActiveCardId] = useState(null);
 
   const { getaddToCart } = useContext(cartcontext);
   const { getaddToWishlist, wishlistlike, removeItemWishlist } =
