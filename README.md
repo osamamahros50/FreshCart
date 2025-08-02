@@ -26,6 +26,10 @@ FreshCart allows users to browse products, manage their cart and wishlist, and e
 - **Font Awesome**
 - **React Toastify**
 
+instalation:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/osamamahros50/FreshCart.git
 
 📌 Usage
 This is a full-stack-ready frontend project. You can:
@@ -50,6 +54,4 @@ For any questions or collaboration ideas:
 GitHub: https://github.com/osamamahros50/FreshCart.git
 
 Email: osamamahros30@gmail.com
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/osamamahros50/FreshCart.git
+
