@@ -47,7 +47,7 @@ Pull requests are welcome! If you find any bugs or have ideas to improve the app
 📬 Contact
 For any questions or collaboration ideas:
 
-GitHub: https://fresh-cart-gilt-eta.vercel.app/
+GitHub: https://github.com/osamamahros50/FreshCart.git
 
 Email: osamamahros30@gmail.com
 1. Clone the repository:
