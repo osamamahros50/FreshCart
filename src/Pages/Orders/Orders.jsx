@@ -2,8 +2,8 @@ import axios from "axios";
 import React from "react";
 import Allorders from "../../Component/Allorders/Allorders";
 import Loadere from "../../Component/Loader/Loadere";
-import { useNavigate } from "react-router-dom";
-import { ChevronLeft } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import { ChevronLeft, Package } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 const displayOrders = async () => {
   const userId = localStorage.getItem("userId");
@@ -36,9 +36,18 @@ export default function Orders() {
       <div className="h-1 bg-secondary w-1/4 mx-auto"></div>
 
       {data.length === 0 ? (
-        <div className="text-center h-screen mt-50 text-red-500 font-semibold my-10 text-xl">
-          don't have any orders yet
-        </div>
+     <div className="flex flex-col justify-center items-center h-screen text-center px-4">
+      <Package className="w-16 h-16 text-secondary mb-4" />
+      <h2 className="text-2xl font-bold text-main mb-2">
+        No Orders Yet
+      </h2>
+      <p className="text-secondary mb-6">
+        Looks like you haven't placed any orders yet.
+      </p>
+      <Link to={'/product'} className="px-6 py-2 bg-main text-white rounded-full shadow hover:bg-secondary transition">
+        Start Shopping
+      </Link>
+    </div>
       ) : (
         <>
           <div className="flex gap-5">
