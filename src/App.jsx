@@ -134,7 +134,7 @@ function App() {
           ),
         },
         {
-          path: "allorders",
+          path: "orders/allorders",
           element: (
             <ProtectRoureProvider>
               <Allorders />
