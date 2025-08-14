@@ -17,7 +17,7 @@ async function checkoutOnline(values) {
   setloadingspin1(true);
   try {
     let { data } = await axios.post(
-      `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cart.cartId}?url=https://fresh-cart-gilt-eta.vercel.app/orders`,
+      `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cart.cartId}?url=https://fresh-cart-gilt-eta.vercel.app/`,
       { shippingAddress: values },
       { headers: { token: localStorage.getItem("token") } }
     );
