@@ -44,23 +44,27 @@ export default function Allorders({ item }) {
     );
   }
 
-  const transactionNumber = item?.id || "غير متاح";
-  const placedOn = item?.updatedAt || item?.createdAt
-    ? new Date(item.updatedAt || item.createdAt).toLocaleDateString("en-GB", {
-        day: "2-digit",
-        month: "short",
-        year: "numeric",
-      })
-    : "غير متاح";
-  const paymentMethod = item?.paymentMethodType || "غير متاح";
-  const shippingPrice = typeof item?.shippingPrice === "number" ? item.shippingPrice : 0;
-  const taxPrice = typeof item?.taxPrice === "number" ? item.taxPrice : 0;
-  const totalOrderPrice = typeof item?.totalOrderPrice === "number" ? item.totalOrderPrice : 0;
-  const products = Array.isArray(item?.cartItems) ? item.cartItems : [];
+  const transactionNumber = item?.id || "N/A";
+  const placedOn =
+    item?.updatedAt || item?.createdAt
+      ? new Date(item?.updatedAt || item?.createdAt).toLocaleDateString(
+          "en-GB",
+          {
+            day: "2-digit",
+            month: "short",
+            year: "numeric",
+          }
+        )
+      : "N/A";
+  const paymentMethod = item?.paymentMethodType || "N/A";
+  const shippingPrice = item?.shippingPrice ?? "N/A";
+  const taxPrice = item?.taxPrice ?? "N/A";
+  const totalOrderPrice = item?.totalOrderPrice ?? "N/A";
+  const products = item?.cartItems || [];
 
   return (
     <>
-      <div className="bg-white shadow-lg rounded-lg p-6 dark:bg-slate-700 space-y-6 border border-secondary">
+      <div className="bg-white shadow-lg rounded-lg p-6  dark:bg-slate-700  space-y-6 border border-secondary">
         {/* Header */}
         <div className="flex flex-col lg:flex-row justify-between gap-4 bg-slate-200 dark:bg-slate-700 dark:shadow-2xl p-4 rounded">
           <p className="text-main font-bold text-base lg:text-lg">
@@ -100,25 +104,25 @@ export default function Allorders({ item }) {
                   <p className="text-secondary text-lg font-bold">
                     {cartItem?.product?.title
                       ? cartItem.product.title.split(" ").slice(0, 2).join(" ")
-                      : "غير متاح"}
+                      : "N/A"}
                   </p>
                   <p className="text-main font-bold text-sm md:text-base">
                     Price:{" "}
                     <span className="text-secondary">
-                      EGP {cartItem?.price ?? 0}
+                      EGP {cartItem?.price ?? "N/A"}
                     </span>
                   </p>
                   <p className="text-main font-bold text-sm md:text-base">
                     Quantity:{" "}
                     <span className="text-secondary">
-                      {cartItem?.count ?? 0}
+                      {cartItem?.count ?? "N/A"}
                     </span>
                   </p>
                   <p className="text-main font-bold text-sm md:text-base">
                     Category:
                     <span className="text-secondary">
                       {" "}
-                      {cartItem?.product?.category?.name || "غير متاح"}
+                      {cartItem?.product?.category?.name || "N/A"}
                     </span>
                   </p>
                 </div>
