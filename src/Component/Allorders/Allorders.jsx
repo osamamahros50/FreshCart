@@ -11,18 +11,21 @@ export default function Allorders({ item }) {
       <>
         <div className="p-4 rounded-lg mb-4 flex justify-between items-center relative animate-pulse">
           <div>
-            {[...Array(6)].map((_, i) => (
-              <div
-                key={i}
-                className={`h-4 w-${48 - i * 4} bg-gray-300 rounded mb-4 mt-${i === 0 ? 5 : 0}`}
-              ></div>
-            ))}
+            <div className="h-4 w-48 bg-gray-300 rounded mb-4 mt-5"></div>
+            <div className="h-4 w-40 bg-gray-300 rounded mb-4"></div>
+            <div className="h-4 w-36 bg-gray-300 rounded mb-4"></div>
+            <div className="h-4 w-44 bg-gray-300 rounded mb-4"></div>
+            <div className="h-4 w-32 bg-gray-300 rounded mb-4"></div>
+            <div className="h-4 w-24 bg-gray-300 rounded mb-4"></div>
           </div>
 
           <div className="flex flex-col items-center gap-4 mt-4">
             <div className="h-4 w-20 bg-gray-300 rounded"></div>
             {[...Array(3)].map((_, index) => (
-              <div key={index} className="flex justify-center items-center gap-2 pb-4">
+              <div
+                key={index}
+                className="flex justify-center items-center gap-2 pb-4"
+              >
                 <div className="h-[50px] w-[50px] bg-gray-300 rounded-md"></div>
                 <div className="h-3 w-24 bg-gray-300 rounded"></div>
               </div>
@@ -41,110 +44,111 @@ export default function Allorders({ item }) {
     );
   }
 
-  const transactionNumber = item?.id ?? "N/A";
-  const placedOn = item?.createdAt
-    ? new Date(item.createdAt).toLocaleDateString("en-GB", {
+  const transactionNumber = item?.id || "غير متاح";
+  const placedOn = item?.updatedAt || item?.createdAt
+    ? new Date(item.updatedAt || item.createdAt).toLocaleDateString("en-GB", {
         day: "2-digit",
         month: "short",
         year: "numeric",
       })
-    : "N/A";
-  const paymentMethod = item?.paymentMethodType ?? "N/A";
-  const shippingPrice = item?.shippingPrice ?? 0;
-  const taxPrice = item?.taxPrice ?? 0;
-  const totalOrderPrice = item?.totalOrderPrice ?? 0;
+    : "غير متاح";
+  const paymentMethod = item?.paymentMethodType || "غير متاح";
+  const shippingPrice = typeof item?.shippingPrice === "number" ? item.shippingPrice : 0;
+  const taxPrice = typeof item?.taxPrice === "number" ? item.taxPrice : 0;
+  const totalOrderPrice = typeof item?.totalOrderPrice === "number" ? item.totalOrderPrice : 0;
   const products = Array.isArray(item?.cartItems) ? item.cartItems : [];
-  const totalProductsQty = products.reduce((sum, p) => sum + (p?.count ?? 0), 0);
 
   return (
-    <div className="bg-white shadow-lg rounded-lg p-6 dark:bg-slate-700 space-y-6 border border-secondary">
-      {/* Header */}
-      <div className="flex flex-col lg:flex-row justify-between gap-4 bg-slate-200 dark:bg-slate-700 dark:shadow-2xl p-4 rounded">
-        <p className="text-main font-bold text-base lg:text-lg">
-          Transaction Number:
-          <span className="text-secondary"> #{transactionNumber}</span>
-        </p>
-        <p className="text-main font-bold text-base lg:text-lg">
-          Placed on:
-          <span className="text-secondary"> {placedOn}</span>
-        </p>
-        <p className="text-main font-bold text-base lg:text-lg">
-          Payment:
-          <span className="text-secondary capitalize"> {paymentMethod}</span>
-        </p>
-        <Link
-          to={"/product"}
-          className="btn bg-main w-fit hover:bg-secondary duration-300 text-base lg:text-lg"
-        >
-          Add New item
-        </Link>
-      </div>
+    <>
+      <div className="bg-white shadow-lg rounded-lg p-6 dark:bg-slate-700 space-y-6 border border-secondary">
+        {/* Header */}
+        <div className="flex flex-col lg:flex-row justify-between gap-4 bg-slate-200 dark:bg-slate-700 dark:shadow-2xl p-4 rounded">
+          <p className="text-main font-bold text-base lg:text-lg">
+            Transaction Number:
+            <span className="text-secondary"> #{transactionNumber}</span>
+          </p>
+          <p className="text-main font-bold text-base lg:text-lg">
+            Placed on:
+            <span className="text-secondary"> {placedOn}</span>
+          </p>
+          <p className="text-main font-bold text-base lg:text-lg">
+            Payment:
+            <span className="text-secondary"> {paymentMethod}</span>
+          </p>
+          <Link
+            to={"/product"}
+            className="btn bg-main w-fit hover:bg-secondary duration-300 text-base lg:text-lg"
+          >
+            Add New item
+          </Link>
+        </div>
 
-      {/* Items */}
-      <div className="flex flex-col items-start gap-5">
-        {products.length > 0 ? (
-          products.map((cartItem, index) => (
-            <div
-              key={index}
-              className="flex flex-col md:flex-row items-start md:items-center gap-8 bg-slate-50 dark:bg-slate-700 dark:shadow-2xl p-3 rounded-md"
-            >
-              <img
-                className="h-[100px] w-[100px] object-cover bg-amber-50 shadow rounded"
-                src={cartItem?.product?.imageCover || ""}
-                alt={cartItem?.product?.title || "Product"}
-              />
-              <div className="flex flex-col text-left">
-                <p className="text-secondary text-lg font-bold">
-                  {cartItem?.product?.title
-                    ? cartItem.product.title.split(" ").slice(0, 2).join(" ")
-                    : "N/A"}
-                </p>
-                <p className="text-main font-bold text-sm md:text-base">
-                  Price:{" "}
-                  <span className="text-secondary">
-                    EGP {cartItem?.price ?? 0}
-                  </span>
-                </p>
-                <p className="text-main font-bold text-sm md:text-base">
-                  Quantity:{" "}
-                  <span className="text-secondary">
-                    {cartItem?.count ?? 0}
-                  </span>
-                </p>
-                <p className="text-main font-bold text-sm md:text-base">
-                  Category:
-                  <span className="text-secondary">
-                    {" "}
-                    {cartItem?.product?.category?.name || "N/A"}
-                  </span>
-                </p>
+        {/* Items */}
+        <div className="flex flex-col items-start gap-5">
+          {products.length > 0 ? (
+            products.map((cartItem, index) => (
+              <div
+                key={index}
+                className="flex flex-col md:flex-row items-start md:items-center gap-8 bg-slate-50 dark:bg-slate-700 dark:shadow-2xl p-3 rounded-md"
+              >
+                <img
+                  className="h-[100px] w-[100px] object-cover bg-amber-50 shadow rounded"
+                  src={cartItem?.product?.imageCover || ""}
+                  alt={cartItem?.product?.title || "Product"}
+                />
+                <div className="flex flex-col text-left">
+                  <p className="text-secondary text-lg font-bold">
+                    {cartItem?.product?.title
+                      ? cartItem.product.title.split(" ").slice(0, 2).join(" ")
+                      : "غير متاح"}
+                  </p>
+                  <p className="text-main font-bold text-sm md:text-base">
+                    Price:{" "}
+                    <span className="text-secondary">
+                      EGP {cartItem?.price ?? 0}
+                    </span>
+                  </p>
+                  <p className="text-main font-bold text-sm md:text-base">
+                    Quantity:{" "}
+                    <span className="text-secondary">
+                      {cartItem?.count ?? 0}
+                    </span>
+                  </p>
+                  <p className="text-main font-bold text-sm md:text-base">
+                    Category:
+                    <span className="text-secondary">
+                      {" "}
+                      {cartItem?.product?.category?.name || "غير متاح"}
+                    </span>
+                  </p>
+                </div>
               </div>
-            </div>
-          ))
-        ) : (
-          <p>No products found in this order.</p>
-        )}
-      </div>
+            ))
+          ) : (
+            <p>No products found in this order.</p>
+          )}
+        </div>
 
-      {/* Summary */}
-      <div className="bg-slate-100 dark:bg-slate-700 dark:shadow-2xl p-4 rounded-md shadow-md mt-2">
-        <p className="text-main font-bold text-base lg:text-lg mb-2">
-          Products Quantity:
-          <span className="text-secondary"> {totalProductsQty}</span>
-        </p>
-        <p className="text-main font-bold text-base lg:text-lg mb-2">
-          Shipping Price:
-          <span className="text-secondary"> EGP {shippingPrice}</span>
-        </p>
-        <p className="text-main font-bold text-base lg:text-lg mb-2">
-          Tax Price:
-          <span className="text-secondary"> EGP {taxPrice}</span>
-        </p>
-        <p className="text-main font-bold text-base lg:text-lg">
-          Total Order Price:
-          <span className="text-secondary"> EGP {totalOrderPrice}</span>
-        </p>
+        {/* Summary */}
+        <div className="bg-slate-100 dark:bg-slate-700 dark:shadow-2xl p-4 rounded-md shadow-md mt-2">
+          <p className="text-main font-bold text-base lg:text-lg mb-2">
+            Products Quantity:
+            <span className="text-secondary"> {products.length}</span>
+          </p>
+          <p className="text-main font-bold text-base lg:text-lg mb-2">
+            Shipping Price:
+            <span className="text-secondary"> EGP {shippingPrice}</span>
+          </p>
+          <p className="text-main font-bold text-base lg:text-lg mb-2">
+            Tax Price:
+            <span className="text-secondary"> EGP {taxPrice}</span>
+          </p>
+          <p className="text-main font-bold text-base lg:text-lg">
+            Total Order Price:
+            <span className="text-secondary"> EGP {totalOrderPrice}</span>
+          </p>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
