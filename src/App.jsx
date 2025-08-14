@@ -31,6 +31,7 @@ import PageNotFound from "./Pages/PageNotFound/PageNotFound";
 import AuthContextProvider from "../Context/AuthContextProvider";
 import WishlistContextProvider from "../Context/Wishlistcontextprovider";
 import CartContextProvider from "../Context/CartContextProvider";
+import Allorders from "./Component/Allorders/Allorders";
 function App() {
   useEffect(() => {
     AOS.init({
@@ -129,6 +130,14 @@ function App() {
           element: (
             <ProtectRoureProvider>
               <Orders />
+            </ProtectRoureProvider>
+          ),
+        },
+        {
+          path: "/orders/allorders",
+          element: (
+            <ProtectRoureProvider>
+              <Allorders />
             </ProtectRoureProvider>
           ),
         },

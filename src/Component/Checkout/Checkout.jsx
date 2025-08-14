@@ -13,24 +13,25 @@ export default function Checkout({ totalPrice }) {
   let [loadingspin1, setloadingspin1] = useState(false);
 
   let Navigate = useNavigate();
-  async function checkoutOnline(values) {
-    setloadingspin1(true);
-    try {
-      let { data } = await axios.post(
-        `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cart.cartId}?url=http://localhost:3000`,
-        { shippingAddress: values },
-        { headers: { token: localStorage.getItem("token") } }
-      );
-      console.log(data);
-      if (data.status == "success") {
-        window.location.href = data.session.url;
-      }
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setloadingspin1(false);
+async function checkoutOnline(values) {
+  setloadingspin1(true);
+  try {
+    let { data } = await axios.post(
+      `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cart.cartId}?url=https://fresh-cart-gilt-eta.vercel.app/`,
+      { shippingAddress: values },
+      { headers: { token: localStorage.getItem("token") } }
+    );
+    console.log(data);
+    if (data.status === "success") {
+      window.location.href = data.session.url;
     }
+  } catch (error) {
+    console.log(error);
+  } finally {
+    setloadingspin1(false);
   }
+}
+
   async function checkoutcash(values) {
     setloadingspin(true);
     try {
