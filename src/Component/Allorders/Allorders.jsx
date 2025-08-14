@@ -44,27 +44,24 @@ export default function Allorders({ item }) {
     );
   }
 
-  const transactionNumber = item?.id || "N/A";
+  const transactionNumber = item?.id ?? "N/A";
   const placedOn =
-    item?.updatedAt || item?.createdAt
-      ? new Date(item?.updatedAt || item?.createdAt).toLocaleDateString(
-          "en-GB",
-          {
-            day: "2-digit",
-            month: "short",
-            year: "numeric",
-          }
-        )
+    item?.createdAt
+      ? new Date(item.createdAt).toLocaleDateString("en-GB", {
+          day: "2-digit",
+          month: "short",
+          year: "numeric",
+        })
       : "N/A";
-  const paymentMethod = item?.paymentMethodType || "N/A";
+  const paymentMethod = item?.paymentMethodType ?? "N/A";
   const shippingPrice = item?.shippingPrice ?? "N/A";
   const taxPrice = item?.taxPrice ?? "N/A";
   const totalOrderPrice = item?.totalOrderPrice ?? "N/A";
-  const products = item?.cartItems || [];
+  const products = item?.cartItems ?? [];
 
   return (
     <>
-      <div className="bg-white shadow-lg rounded-lg p-6  dark:bg-slate-700  space-y-6 border border-secondary">
+      <div className="bg-white shadow-lg rounded-lg p-6 dark:bg-slate-700 space-y-6 border border-secondary">
         {/* Header */}
         <div className="flex flex-col lg:flex-row justify-between gap-4 bg-slate-200 dark:bg-slate-700 dark:shadow-2xl p-4 rounded">
           <p className="text-main font-bold text-base lg:text-lg">
