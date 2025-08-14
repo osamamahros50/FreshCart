@@ -10,7 +10,9 @@ const displayOrders = async () => {
   const { data } = await axios.get(
     `https://ecommerce.routemisr.com/api/v1/orders/user/${userId}`
   );
+  console.log(data);
   return data;
+  
 };
 
 export default function Orders() {
