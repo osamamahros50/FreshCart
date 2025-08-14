@@ -49,13 +49,13 @@ export default function Allorders({ item }) {
         <div className="flex flex-col lg:flex-row justify-between gap-4 bg-slate-200 dark:bg-slate-700 dark:shadow-2xl p-4 rounded">
           <p className="text-main font-bold text-base lg:text-lg">
             Transaction Number:
-            <span className="text-secondary"> #{item.id}</span>
+            <span className="text-secondary"> #{item?.id}</span>
           </p>
           <p className="text-main font-bold text-base lg:text-lg">
             Placed on:
             <span className="text-secondary">
               {" "}
-              {new Date(item.updatedAt).toLocaleDateString("en-GB", {
+              {new Date(item?.updatedAt).toLocaleDateString("en-GB", {
                 day: "2-digit",
                 month: "short",
                 year: "numeric",
@@ -76,7 +76,7 @@ export default function Allorders({ item }) {
 
         {/* Items */}
         <div className="flex flex-col items-start  gap-5">
-          {item.cartItems?.map((cartItem, index) => (
+          {item?.cartItems?.map((cartItem, index) => (
             <div
               key={index}
               className="flex  flex-col md:flex-row items-start md:items-center gap-8 bg-slate-50 dark:bg-slate-700 dark:shadow-2xl p-3 rounded-md"
