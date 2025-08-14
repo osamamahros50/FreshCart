@@ -2,7 +2,6 @@ import { Trash } from "lucide-react";
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { WishlistContext } from "../../../Context/Wishlistcontextprovider";
-
 export default function Allorders({ item }) {
   let { loading } = useContext(WishlistContext);
 
@@ -43,38 +42,29 @@ export default function Allorders({ item }) {
       </>
     );
   }
-
-  const transactionNumber = item?.id ?? "N/A";
-  const placedOn =
-    item?.createdAt
-      ? new Date(item.createdAt).toLocaleDateString("en-GB", {
-          day: "2-digit",
-          month: "short",
-          year: "numeric",
-        })
-      : "N/A";
-  const paymentMethod = item?.paymentMethodType ?? "N/A";
-  const shippingPrice = item?.shippingPrice ?? "N/A";
-  const taxPrice = item?.taxPrice ?? "N/A";
-  const totalOrderPrice = item?.totalOrderPrice ?? "N/A";
-  const products = item?.cartItems ?? [];
-
   return (
     <>
-      <div className="bg-white shadow-lg rounded-lg p-6 dark:bg-slate-700 space-y-6 border border-secondary">
+      <div className="bg-white shadow-lg rounded-lg p-6  dark:bg-slate-700  space-y-6 border border-secondary">
         {/* Header */}
         <div className="flex flex-col lg:flex-row justify-between gap-4 bg-slate-200 dark:bg-slate-700 dark:shadow-2xl p-4 rounded">
           <p className="text-main font-bold text-base lg:text-lg">
             Transaction Number:
-            <span className="text-secondary"> #{transactionNumber}</span>
+            <span className="text-secondary"> #{item?.id}</span>
           </p>
           <p className="text-main font-bold text-base lg:text-lg">
             Placed on:
-            <span className="text-secondary"> {placedOn}</span>
+            <span className="text-secondary">
+              {" "}
+              {new Date(item?.updatedAt).toLocaleDateString("en-GB", {
+                day: "2-digit",
+                month: "short",
+                year: "numeric",
+              })}
+            </span>
           </p>
           <p className="text-main font-bold text-base lg:text-lg">
             Payment:
-            <span className="text-secondary"> {paymentMethod}</span>
+            <span className="text-secondary"> {item?.paymentMethodType}</span>
           </p>
           <Link
             to={"/product"}
@@ -85,68 +75,58 @@ export default function Allorders({ item }) {
         </div>
 
         {/* Items */}
-        <div className="flex flex-col items-start gap-5">
-          {products.length > 0 ? (
-            products.map((cartItem, index) => (
-              <div
-                key={index}
-                className="flex flex-col md:flex-row items-start md:items-center gap-8 bg-slate-50 dark:bg-slate-700 dark:shadow-2xl p-3 rounded-md"
-              >
-                <img
-                  className="h-[100px] w-[100px] object-cover bg-amber-50 shadow rounded"
-                  src={cartItem?.product?.imageCover || ""}
-                  alt={cartItem?.product?.title || "Product"}
-                />
-                <div className="flex flex-col text-left">
-                  <p className="text-secondary text-lg font-bold">
-                    {cartItem?.product?.title
-                      ? cartItem.product.title.split(" ").slice(0, 2).join(" ")
-                      : "N/A"}
-                  </p>
-                  <p className="text-main font-bold text-sm md:text-base">
-                    Price:{" "}
-                    <span className="text-secondary">
-                      EGP {cartItem?.price ?? "N/A"}
-                    </span>
-                  </p>
-                  <p className="text-main font-bold text-sm md:text-base">
-                    Quantity:{" "}
-                    <span className="text-secondary">
-                      {cartItem?.count ?? "N/A"}
-                    </span>
-                  </p>
-                  <p className="text-main font-bold text-sm md:text-base">
-                    Category:
-                    <span className="text-secondary">
-                      {" "}
-                      {cartItem?.product?.category?.name || "N/A"}
-                    </span>
-                  </p>
-                </div>
+        <div className="flex flex-col items-start  gap-5">
+          {item?.cartItems?.map((cartItem, index) => (
+            <div
+              key={index}
+              className="flex  flex-col md:flex-row items-start md:items-center gap-8 bg-slate-50 dark:bg-slate-700 dark:shadow-2xl p-3 rounded-md"
+            >
+              <img
+                className="h-[100px] w-[100px] object-cover bg-amber-50 shadow rounded"
+                src={cartItem?.product?.imageCover}
+                alt={cartItem?.product?.title || "Product"}
+              />
+              <div className="flex flex-col text-left">
+                <p className="text-secondary text-lg font-bold">
+                  {cartItem.product?.title?.split(" ").slice(0, 2).join(" ")}
+                </p>
+                <p className="text-main font-bold text-sm md:text-base">
+                  Price:{" "}
+                  <span className="text-secondary">EGP {cartItem?.price}</span>
+                </p>
+                <p className="text-main font-bold text-sm md:text-base">
+                  Quantity:{" "}
+                  <span className="text-secondary">{cartItem?.count}</span>
+                </p>
+                <p className="text-main font-bold text-sm md:text-base">
+                  Category:
+                  <span className="text-secondary">
+                    {" "}
+                    {cartItem?.product.category?.name}
+                  </span>
+                </p>
               </div>
-            ))
-          ) : (
-            <p>No products found in this order.</p>
-          )}
+            </div>
+          ))}
         </div>
 
         {/* Summary */}
         <div className="bg-slate-100 dark:bg-slate-700 dark:shadow-2xl p-4 rounded-md shadow-md mt-2">
           <p className="text-main font-bold text-base lg:text-lg mb-2">
             Products Quantity:
-            <span className="text-secondary"> {products.length}</span>
+            <span className="text-secondary"> {item?.cartItems.length}</span>
           </p>
           <p className="text-main font-bold text-base lg:text-lg mb-2">
             Shipping Price:
-            <span className="text-secondary"> EGP {shippingPrice}</span>
+            <span className="text-secondary"> EGP {item?.shippingPrice}</span>
           </p>
           <p className="text-main font-bold text-base lg:text-lg mb-2">
             Tax Price:
-            <span className="text-secondary"> EGP {taxPrice}</span>
+            <span className="text-secondary"> EGP {item?.taxPrice}</span>
           </p>
           <p className="text-main font-bold text-base lg:text-lg">
             Total Order Price:
-            <span className="text-secondary"> EGP {totalOrderPrice}</span>
+            <span className="text-secondary"> EGP {item?.totalOrderPrice}</span>
           </p>
         </div>
       </div>
