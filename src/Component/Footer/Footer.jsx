@@ -24,7 +24,7 @@ export default function Footer() {
             placeholder="Email..."
             id="useremail"
           />
-          <button className="btn w-full px-4 font-bold hover:bg-main duration-300 sm:w-auto">
+          <button className="btn w-full px-5 font-bold hover:bg-main duration-300 sm:w-auto">
             Send{" "}
           </button>
         </div>
