@@ -9,7 +9,7 @@ export default function Loadere() {
             className="cart-path"
             d="M2 6h8l10 40h32l8-24H16"
             stroke="#00cc74"
-            strokeWidth="2"
+            strokeWidth="3"
             fill="none"
           />
           <circle
