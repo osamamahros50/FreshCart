@@ -16,7 +16,7 @@ export default function Categorycard({ item }) {
       <img
         src={item.image}
         alt={item.name}
-        className="w-full h-[200px] object-contain mb-2"
+        className="w-full h-[200px] object-contain mb-3"
       />
       <h3 className="text-lg font-bold text-center text-secondary">
         {item.name}
