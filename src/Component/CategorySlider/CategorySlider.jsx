@@ -79,7 +79,7 @@ export default function CategorySlider() {
                 alt={item.name}
                 className=" h-[200px] w-full object-cover"
               />
-              <h4 className=" font-bold text-secondary mt-3 bg-slate-100 dark:bg-slate-600">
+              <h4 className=" font-bold text-secondary mt-2 bg-slate-100 dark:bg-slate-600">
                 {item.name}
               </h4>
             </div>
