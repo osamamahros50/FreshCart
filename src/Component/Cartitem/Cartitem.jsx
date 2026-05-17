@@ -40,7 +40,7 @@ export default function Cartitem({ item }) {
             </span>
           </p>
           <p className="font-bold text-main dark:text-slate-200">
-            Rate: {" "}
+            Rate: ⭐{" "}
             <span className="font-medium text-secondary">
               {item?.product?.ratingsAverage}
             </span>
