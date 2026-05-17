@@ -27,7 +27,7 @@ export default function ScrollToTopButton() {
         isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
     >
-      <ArrowUp className="w-5 h-5" />
+      <ArrowUp className="w-4 h-5" />
     </button>
   );
 }
