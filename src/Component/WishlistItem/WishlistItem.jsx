@@ -12,7 +12,7 @@ export default function WishlistItem({ item }) {
     return (
       <>
         <div className="p-4 rounded-lg mb-4 flex justify-between items-center animate-pulse">
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             <div className="w-20 h-20 bg-gray-300 dark:bg-slate-700 rounded-2xl"></div>
 
             <div className="flex flex-col space-y-2">
