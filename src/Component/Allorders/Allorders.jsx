@@ -75,7 +75,7 @@ export default function Allorders({ item }) {
         </div>
 
         {/* Items */}
-        <div className="flex flex-col items-start  gap-4">
+        <div className="flex flex-col items-start  gap-5">
           {item?.cartItems?.map((cartItem, index) => (
             <div
               key={index}
