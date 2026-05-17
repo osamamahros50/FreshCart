@@ -35,7 +35,7 @@ export default function Productcard({ item }) {
       <div
         className={`layer z-10 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-between gap-4
           ${isActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"}
-          group-hover:opacity-100 group-hover:translate-y-0
+          group-hover:opacity-90 group-hover:translate-y-0
           transition duration-300`}
       >
         <div
