@@ -11,7 +11,7 @@ export default function Allorders({ item }) {
         <div className="p-4 rounded-lg mb-4 flex justify-between items-center relative animate-pulse">
           <div>
             <div className="h-4 w-48 bg-gray-300 rounded mb-4 mt-5"></div>
-            <div className="h-4 w-40 bg-gray-300 rounded mb-4"></div>
+            <div className="h-3 w-40 bg-gray-300 rounded mb-4"></div>
             <div className="h-4 w-36 bg-gray-300 rounded mb-4"></div>
             <div className="h-4 w-44 bg-gray-300 rounded mb-4"></div>
             <div className="h-4 w-32 bg-gray-300 rounded mb-4"></div>
