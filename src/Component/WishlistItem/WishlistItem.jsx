@@ -24,7 +24,7 @@ export default function WishlistItem({ item }) {
           </div>
 
           <div className="flex gap-5">
-            <div className="h-10 w-24 bg-gray-300 rounded"></div>
+            <div className="h-10 w-24 bg-gray-200 rounded"></div>
             <div className="h-10 w-24 bg-gray-300 rounded"></div>
           </div>
         </div>
