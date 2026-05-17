@@ -23,7 +23,7 @@ export default function Allorders({ item }) {
             {[...Array(3)].map((_, index) => (
               <div
                 key={index}
-                className="flex justify-center items-center gap-2 pb-3"
+                className="flex justify-center items-center gap-2 pb-4"
               >
                 <div className="h-[50px] w-[50px] bg-gray-300 rounded-md"></div>
                 <div className="h-3 w-24 bg-gray-300 rounded"></div>
