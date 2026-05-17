@@ -80,7 +80,7 @@ async function checkoutOnline(values) {
       <div className="flex justify-between">
         <p className="text-lg font-bold">Total</p>
         <div>
-          <p className="mb-2 text-lg font-bold">
+          <p className="mb-1 text-lg font-bold">
             ${totalPrice?.data?.totalCartPrice} USD
           </p>
         </div>
