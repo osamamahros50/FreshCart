@@ -11,7 +11,7 @@ export default function WishlistItem({ item }) {
   if (loading) {
     return (
       <>
-        <div className="p-4 rounded-lg mb-4 flex justify-between items-center animate-pulse">
+        <div className="p-1 rounded-lg mb-4 flex justify-between items-center animate-pulse">
           <div className="flex items-center gap-4">
             <div className="w-20 h-20 bg-gray-300 dark:bg-slate-700 rounded-2xl"></div>
 
