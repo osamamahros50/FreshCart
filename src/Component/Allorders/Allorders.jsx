@@ -90,7 +90,7 @@ export default function Allorders({ item }) {
                 <p className="text-secondary text-lg font-bold">
                   {cartItem.product?.title?.split(" ").slice(0, 2).join(" ")}
                 </p>
-                <p className="text-main font-bold text-md md:text-base">
+                <p className="text-main font-bold text-sm md:text-base">
                   Price:{" "}
                   <span className="text-secondary">EGP {cartItem?.price}</span>
                 </p>
