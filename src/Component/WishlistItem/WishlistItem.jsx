@@ -16,7 +16,7 @@ export default function WishlistItem({ item }) {
             <div className="w-20 h-20 bg-gray-300 dark:bg-slate-700 rounded-2xl"></div>
 
             <div className="flex flex-col space-y-2">
-              <div className="h-4 w-30 bg-gray-300 rounded"></div>
+              <div className="h-4 w-40 bg-gray-300 rounded"></div>
               <div className="h-4 w-28 bg-gray-200 rounded"></div>
               <div className="h-4 w-36 bg-gray-200 rounded"></div>
               <div className="h-4 w-48 bg-gray-200 rounded"></div>
