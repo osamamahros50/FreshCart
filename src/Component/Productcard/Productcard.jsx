@@ -89,7 +89,7 @@ export default function Productcard({ item }) {
       <div className="card-body">
         <Link
           to={`/productdetails/${item?._id}`}
-          className="card-title text-secondary font-white"
+          className="card-title text-secondary font-black"
         >
           {item.title.split(" ", 2).join(" ")}
         </Link>
