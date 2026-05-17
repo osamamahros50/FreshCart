@@ -34,7 +34,7 @@ export default function Allorders({ item }) {
           <div className="mt-4 flex flex-col items-end gap-4">
             <div className="h-8 w-20 bg-gray-300 rounded"></div>
             <div className="bg-gray-200 p-2 rounded-lg shadow-md mt-4 absolute top-2 right-2">
-              <div className="h-4 w-24 bg-gray-300 rounded"></div>
+              <div className="h-4 w-24 bg-gray-200 rounded"></div>
             </div>
           </div>
         </div>
