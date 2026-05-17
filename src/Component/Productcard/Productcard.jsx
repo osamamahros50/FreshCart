@@ -109,7 +109,7 @@ export default function Productcard({ item }) {
           Price:{" "}
           <span className="text-secondary font-medium">{item.price} EGP</span>
         </span>
-        <div className="flex gap-1">
+        <div className="flex gap-2">
           <span className="text-yellow-300">⭐</span>
           <span>{item.ratingsAverage}</span>
         </div>
