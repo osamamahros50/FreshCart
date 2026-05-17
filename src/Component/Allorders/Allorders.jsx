@@ -19,7 +19,7 @@ export default function Allorders({ item }) {
           </div>
 
           <div className="flex flex-col items-center gap-4 mt-4">
-            <div className="h-4 w-20 bg-gray-200 rounded"></div>
+            <div className="h-4 w-20 bg-gray-300 rounded"></div>
             {[...Array(3)].map((_, index) => (
               <div
                 key={index}
