@@ -57,7 +57,7 @@ export default function Navbar({ changeTheme, theme }) {
   };
 
   return (
-    <div className="p-5 fixed top-0 w-full z-50 bg-slate-200 shadow-xl dark:bg-slate-800 dark:text-slate-200  transition-all duration-300 ease-in-out">
+    <div className="p-5 fixed top-1 w-full z-50 bg-slate-200 shadow-xl dark:bg-slate-800 dark:text-slate-200  transition-all duration-300 ease-in-out">
       <div className="container flex justify-between  items-center ">
         {/* Links Pages */}
         <h1>
