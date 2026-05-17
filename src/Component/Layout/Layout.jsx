@@ -21,7 +21,7 @@ export default function Layout() {
         <Navbar changeTheme={changeTheme} theme={theme} />
       </div>
       <div
-        className={`container overflow-hidden py-18 dark:bg-slate-700   ${theme}`}
+        className={`container overflow-hidden py-20 dark:bg-slate-700   ${theme}`}
       >
         <ScrollToTopButton />
         <Outlet />
