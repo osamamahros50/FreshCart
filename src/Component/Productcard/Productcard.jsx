@@ -82,7 +82,7 @@ export default function Productcard({ item }) {
 
       <img
         src={item.imageCover}
-        className="w-full duration-300 hover:scale-105 h-60 object-cover"
+        className="w-full duration-300 hover:scale-105 h-70 object-cover"
         alt={item.title}
       />
 
