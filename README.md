@@ -45,7 +45,7 @@ Connect to any API or backend of your choice
 This project is open-source and available under the MIT License.
 
 
-🤝 Contributing
+⭐ Contributing
 Pull requests are welcome! If you find any bugs or have ideas to improve the app, feel free to contribute.
 
 📬 Contact
