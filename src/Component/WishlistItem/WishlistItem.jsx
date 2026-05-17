@@ -19,7 +19,7 @@ export default function WishlistItem({ item }) {
               <div className="h-4 w-40 bg-gray-300 rounded"></div>
               <div className="h-4 w-28 bg-gray-200 rounded"></div>
               <div className="h-4 w-36 bg-gray-200 rounded"></div>
-              <div className="h-4 w-48 bg-gray-200 rounded"></div>
+              <div className="h-4 w-50 bg-gray-200 rounded"></div>
             </div>
           </div>
 
