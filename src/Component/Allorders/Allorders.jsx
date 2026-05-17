@@ -13,7 +13,7 @@ export default function Allorders({ item }) {
             <div className="h-4 w-48 bg-gray-300 rounded mb-4 mt-5"></div>
             <div className="h-4 w-40 bg-gray-300 rounded mb-4"></div>
             <div className="h-4 w-36 bg-gray-300 rounded mb-4"></div>
-            <div className="h-4 w-20 bg-gray-300 rounded mb-4"></div>
+            <div className="h-4 w-44 bg-gray-300 rounded mb-4"></div>
             <div className="h-4 w-32 bg-gray-300 rounded mb-4"></div>
             <div className="h-4 w-24 bg-gray-300 rounded mb-4"></div>
           </div>
