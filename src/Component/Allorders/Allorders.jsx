@@ -111,7 +111,7 @@ export default function Allorders({ item }) {
         </div>
 
         {/* Summary */}
-        <div className="bg-slate-100 dark:bg-slate-700 dark:shadow-2xl p-4 rounded-md shadow-md mt-2">
+        <div className="bg-slate-200 dark:bg-slate-700 dark:shadow-2xl p-4 rounded-md shadow-md mt-2">
           <p className="text-main font-bold text-base lg:text-lg mb-2">
             Products Quantity:
             <span className="text-secondary"> {item?.cartItems.length}</span>
