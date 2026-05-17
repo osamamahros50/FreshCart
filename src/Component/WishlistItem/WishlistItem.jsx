@@ -29,7 +29,7 @@ export default function WishlistItem({ item }) {
           </div>
         </div>
 
-        <div className="h-0.5 w-[80%] mx-auto bg-gray-200"></div>
+        <div className="h-0.5 w-[80%] mx-auto bg-gray-100"></div>
       </>
     );
   }
