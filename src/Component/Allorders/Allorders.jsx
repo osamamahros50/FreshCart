@@ -44,7 +44,7 @@ export default function Allorders({ item }) {
   }
   return (
     <>
-      <div className="bg-white shadow-lg rounded-lg p-6  dark:bg-slate-700  space-y-6 border border-secondary">
+      <div className="bg-white shadow-lg rounded-lg p-5  dark:bg-slate-700  space-y-6 border border-secondary">
         {/* Header */}
         <div className="flex flex-col lg:flex-row justify-between gap-4 bg-slate-200 dark:bg-slate-700 dark:shadow-2xl p-4 rounded">
           <p className="text-main font-bold text-base lg:text-lg">
