@@ -11,7 +11,7 @@ export default function Brandscard({ item }) {
     <div
       data-aos="fade-up"
       onClick={handleClick}
-      className="  rounded duration-300 p-4 shadow bg-dark dark:bg-slate-700 dark:text-slate-200 cursor-pointer hover:shadow-lg transition hover:border-2 hover:border-secondary"
+      className="  rounded duration-300 p-4 shadow bg-white dark:bg-slate-700 dark:text-slate-200 cursor-pointer hover:shadow-lg transition hover:border-2 hover:border-secondary"
     >
       <img
         src={item.image}
